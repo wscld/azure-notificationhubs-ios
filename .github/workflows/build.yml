@@ -37,7 +37,7 @@ jobs:
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging tvOS Framework' }}
     steps:
-    - uses: actions/checkout@v
+    - uses: actions/checkout@v2
       with: 
         submodules: true
 
