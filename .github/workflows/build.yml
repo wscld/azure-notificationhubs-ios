@@ -24,7 +24,7 @@ jobs:
     - name: iOS Build
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
     
-    - name: Upload macOS Build Artifacts
+    - name: Upload iOS Build Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: ios-build
@@ -50,7 +50,7 @@ jobs:
     - name: iOS Test
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
-    - name: Upload macOS Build Artifacts
+    - name: Upload tvOS Build Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: tvos-build
@@ -73,10 +73,16 @@ jobs:
     - name: macOS Analyze
       run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
 
-    - name: macOS Test
+    - name: macOS Build
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
-      
-  mac-catalyst-analyze-test:
+  
+    - name: Upload macOS Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: macos-build
+        path: build/  
+    
+  mac-catalyst-build:
     runs-on: macos-12
     env:
       XC_VERSION: ${{ '13.4.1' }}
@@ -93,11 +99,11 @@ jobs:
     - name: macOS Analyze
       run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
 
-    - name: macOS Test
+    - name: macOS Build
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
 
     - name: Upload macOS Build Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ios-build
+        name: mac-catalyst-build
         path: build/
