@@ -25,7 +25,7 @@ jobs:
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
     
     - name: Upload macOS Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ios-build
         path: build/
@@ -37,7 +37,7 @@ jobs:
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
       XC_SCHEME: ${{ 'WindowsAzureMessaging tvOS Framework' }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v
       with: 
         submodules: true
 
@@ -51,7 +51,7 @@ jobs:
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
     - name: Upload macOS Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: tvos-build
         path: build/
@@ -97,7 +97,7 @@ jobs:
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
 
     - name: Upload macOS Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ios-build
         path: build/
