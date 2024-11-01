@@ -9,7 +9,7 @@ jobs:
     env:
       XC_VERSION: ${{ '13.4.1' }}
       XC_WORKSPACE: ${{ 'WindowsAzureMessaging.xcworkspace' }}
-      XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Framework' }}
+      XC_SCHEME: ${{ 'WindowsAzureMessaging iOS Universal' }}
     steps:
     - uses: actions/checkout@v2
       with: 
