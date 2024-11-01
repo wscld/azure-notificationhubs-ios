@@ -1,14 +1,10 @@
 name: build
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch: 
 
 jobs:
-  ios-analyze-test:
+  ios-build:
     runs-on: macos-12
     env:
       XC_VERSION: ${{ '13.4.1' }}
@@ -27,8 +23,14 @@ jobs:
 
     - name: iOS Build
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+    
+    - name: Upload macOS Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ios-build
+        path: build/
 
-  tvos-analyze-test:
+  tvos-build:
     runs-on: macos-12
     env:
       XC_VERSION: ${{ '13.4.1' }}
@@ -48,7 +50,13 @@ jobs:
     - name: iOS Test
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=tvOS Simulator,name=Apple TV 4K (2nd generation)'
 
-  macos-analyze-test:
+    - name: Upload macOS Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: tvos-build
+        path: build/
+
+  macos-build:
     runs-on: macos-12
     env:
       XC_VERSION: ${{ '13.4.1' }}
@@ -87,3 +95,9 @@ jobs:
 
     - name: macOS Test
       run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=macOS'
+
+    - name: Upload macOS Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ios-build
+        path: build/
