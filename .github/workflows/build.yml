@@ -18,6 +18,9 @@ jobs:
     - name: Select Xcode
       run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
 
+    - name: Download iOS
+      run: /usr/bin/xcodebuild -downloadPlatform iOS
+
     - name: iOS Analyze
       run: /usr/bin/xcodebuild analyze -configuration Release -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS,name=Any iOS Device'
 
