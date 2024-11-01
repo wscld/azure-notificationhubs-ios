@@ -18,14 +18,11 @@ jobs:
     - name: Select Xcode
       run: "sudo xcode-select -switch /Applications/Xcode_$XC_VERSION.app"
 
-    - name: Download iOS
-      run: /usr/bin/xcodebuild -downloadPlatform iOS
-
     - name: iOS Analyze
       run: /usr/bin/xcodebuild analyze -configuration Release -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS,name=Any iOS Device'
 
     - name: iOS Build
-      run: /usr/bin/xcodebuild build -configuration Release -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS,name=Any iOS Device'
+      run: /usr/bin/xcodebuild archive -configuration Release -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS,name=Any iOS Device'
     
     - name: Upload iOS Build Artifacts
       uses: actions/upload-artifact@v4
