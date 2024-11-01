@@ -28,7 +28,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ios-build
-        path: build/
+        path: ~/Library/Developer/Xcode/DerivedData
 
   tvos-build:
     runs-on: macos-12
@@ -54,7 +54,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: tvos-build
-        path: build/
+        path: ~/Library/Developer/Xcode/DerivedData
 
   macos-build:
     runs-on: macos-12
@@ -80,7 +80,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: macos-build
-        path: build/  
+        path: ~/Library/Developer/Xcode/DerivedData
     
   mac-catalyst-build:
     runs-on: macos-12
@@ -106,4 +106,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: mac-catalyst-build
-        path: build/
+        path: ~/Library/Developer/Xcode/DerivedData
