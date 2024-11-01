@@ -22,7 +22,7 @@ jobs:
       run: /usr/bin/xcodebuild analyze -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
 
     - name: iOS Build
-      run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS, id=dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name=Any iOS Device'
+      run: /usr/bin/xcodebuild build -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS,name=Any iOS Device'
     
     - name: Upload iOS Build Artifacts
       uses: actions/upload-artifact@v4
